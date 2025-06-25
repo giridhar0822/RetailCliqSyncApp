@@ -1,0 +1,202 @@
+﻿body {
+    padding-top: 70px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/*.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}*/
+
+.loading-spinner {
+    display: none;
+    margin-top: 20px;
+}
+
+.response-box {
+    margin-top: 20px;
+}
+
+.btn-rounded {
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+#loader {
+    margin-top: 1rem;
+}
+.navbar-logo {
+    height: 60px;
+    max-width: 200px;
+    object-fit: contain;
+}
+#responseMessages {
+    margin-top: 20px;
+}
+
+.alert {
+    margin-bottom: 10px;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    transition: 0.2s ease-in-out;
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.2);
+}
+
+/* 💠 Glass effect box */
+.glass-box {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+}
+
+/* 🌟 Neumorphism-style buttons */
+.btn-glass {
+    padding: 12px 28px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(145deg, #5dd98a, #3ebd6e);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 6px 6px 12px #c8c8c8, -6px -6px 12px #ffffff;
+    transition: 0.3s ease-in-out;
+}
+
+    .btn-glass:hover {
+        box-shadow: inset 4px 4px 10px #c8c8c8, inset -4px -4px 10px #ffffff;
+        transform: scale(1.02);
+        background: linear-gradient(145deg, #3ebd6e, #5dd98a);
+    }
+.loading-spinner {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* 🔄 Synchronise Button (Green) */
+.btn-sync {
+    padding: 12px 28px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(145deg, #28a745, #218838);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 6px 6px 12px #c8c8c8, -6px -6px 12px #ffffff;
+    transition: 0.3s ease-in-out;
+}
+
+    .btn-sync:hover {
+        box-shadow: inset 4px 4px 10px #c8c8c8, inset -4px -4px 10px #ffffff;
+        transform: scale(1.02);
+        background: linear-gradient(145deg, #218838, #28a745);
+    }
+
+/* ♻️ Reset Button (Gray-Blue) */
+.btn-reset {
+    padding: 12px 28px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(145deg, #6c757d, #5a6268);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 6px 6px 12px #c8c8c8, -6px -6px 12px #ffffff;
+    transition: 0.3s ease-in-out;
+}
+
+    .btn-reset:hover {
+        box-shadow: inset 4px 4px 10px #c8c8c8, inset -4px -4px 10px #ffffff;
+        transform: scale(1.02);
+        background: linear-gradient(145deg, #5a6268, #6c757d);
+    }
+/* Navbar - Gradient Glass Effect */
+.custom-navbar {
+    background: linear-gradient(to right, #007cf0, #00dfd8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Logout Button Style */
+.logout-btn {
+    background: linear-gradient(to right, #ff6a00, #ee0979);
+    border: none;
+    color: white;
+    font-weight: 500;
+    border-radius: 30px;
+    padding: 6px 18px;
+    box-shadow: 0 4px 14px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+    .logout-btn:hover {
+        background: linear-gradient(to right, #ee0979, #ff6a00);
+        transform: scale(1.05);
+        box-shadow: 0 6px 18px rgba(255, 105, 180, 0.5);
+        text-decoration: none;
+        color: white;
+    }
+/* Navbar Gradient & Glass Effect */
+.custom-navbar {
+    background: linear-gradient(to right, #007cf0, #00dfd8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #0d6efd;
+    margin-right: 12px;
+    transition: all 0.2s ease;
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+
+
+
+
+   
