@@ -107,6 +107,39 @@
         </form>
     </div>
 
+<div id="chatbot">
+    <div id="chatbox"></div>
+    <input type="text" id="chatInput" placeholder="Ask something..." />
+    <button onclick="sendRuleMessage()">Send</button>
+</div>
+
+<style>
+    #chatbot {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 300px;
+        background: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #ccc;
+        font-family: Arial, sans-serif;
+        z-index: 9999;
+    }
+    #chatbox {
+        height: 200px;
+        overflow-y: auto;
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid #ddd;
+    }
+    #chatbox div {
+        margin-bottom: 5px;
+    }
+</style>
+<script src="~/js/chatbot.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="~/js/login.js"></script>
 </body>
