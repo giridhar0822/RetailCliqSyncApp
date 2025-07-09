@@ -83,30 +83,81 @@
             -webkit-text-fill-color: transparent;
         }
 
-        #chatbot {
+        /* Chatbot styles */
+        #chat-launcher {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 300px;
-            background: white;
-            border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #ccc;
-            font-family: Arial, sans-serif;
+            background: #0d6efd;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             z-index: 9999;
         }
 
-        #chatbox {
-            height: 200px;
-            overflow-y: auto;
-            margin-bottom: 10px;
-            padding: 5px;
-            border: 1px solid #ddd;
+        #chatbot-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 320px;
+            height: 400px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            z-index: 9998;
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #ccc;
         }
 
-        #chatbox div {
-            margin-bottom: 5px;
+        #chatbot-header {
+            background: #0d6efd;
+            color: white;
+            padding: 12px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #chatbox {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            background: #f8f9fa;
+        }
+
+        #chatbot-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+            background: #fff;
+        }
+
+        #chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+        }
+
+        #chatbot-input button {
+            padding: 10px 15px;
+            background: #0d6efd;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -132,27 +183,36 @@
         </form>
     </div>
 
-    <!-- Chatbot UI -->
-    <div id="chatbot">
+    <!-- Floating Chat Icon -->
+    <div id="chat-launcher" onclick="toggleChatWindow()">💬</div>
+
+    <!-- Chatbot Window -->
+    <div id="chatbot-container">
+        <div id="chatbot-header">
+            <span>RetailCliq Assistant</span>
+            <button onclick="toggleChatWindow()">✖</button>
+        </div>
         <div id="chatbox"></div>
-        <input type="text" id="chatInput" placeholder="Ask something..." />
-        <button onclick="sendRuleMessage()">Send</button>
+        <div id="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Type a message..." />
+            <button onclick="sendRuleMessage()">Send</button>
+        </div>
     </div>
 
     <!-- Chatbot Script -->
     <script>
         const ruleBasedAnswers = {
-            "hi": "Hello! How can I help you?",
-            "hello": "Hi there! Ask me something.",
+            "hi": "Hello! How can I help you today?",
+            "hello": "Hi there! Feel free to ask anything.",
             "how to sync data": "Click the 'Sync Now' button in the top-right.",
             "how to reset password": "Go to Settings > Reset Password.",
             "how to add product": "Click 'Add Product' in Inventory section.",
-            "bye": "Goodbye! Have a nice day."
+            "bye": "Goodbye! Have a great day!"
         };
 
         function sendRuleMessage() {
             const input = document.getElementById("chatInput");
-            const userMessage = input.value.trim().toLowerCase();
+            const userMessage = input.value.trim();
             const chatbox = document.getElementById("chatbox");
 
             if (!userMessage) return;
@@ -160,26 +220,35 @@
             chatbox.innerHTML += `<div><b>You:</b> ${userMessage}</div>`;
             input.value = '';
 
-            const response = ruleBasedAnswers[userMessage] || "Sorry, I didn't understand that.";
-            chatbox.innerHTML += `<div><b>Bot:</b> ${response}</div>`;
+            const answer = ruleBasedAnswers[userMessage.toLowerCase()] || "Sorry, I didn't understand that.";
+            chatbox.innerHTML += `<div><b>Bot:</b> ${answer}</div>`;
             chatbox.scrollTop = chatbox.scrollHeight;
         }
 
-        // Add Enter key support
+        function toggleChatWindow() {
+            const chatbot = document.getElementById("chatbot-container");
+            const launcher = document.getElementById("chat-launcher");
+
+            if (chatbot.style.display === "none" || chatbot.style.display === "") {
+                chatbot.style.display = "flex";
+                launcher.style.display = "none";
+            } else {
+                chatbot.style.display = "none";
+                launcher.style.display = "flex";
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
             const input = document.getElementById("chatInput");
-            if (input) {
-                input.addEventListener("keypress", function (e) {
-                    if (e.key === "Enter") {
-                        sendRuleMessage();
-                        e.preventDefault();
-                    }
-                });
-            }
+            input?.addEventListener("keypress", function (e) {
+                if (e.key === "Enter") {
+                    sendRuleMessage();
+                    e.preventDefault();
+                }
+            });
         });
     </script>
 
-    <!-- Other Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="~/js/login.js"></script>
 </body>
