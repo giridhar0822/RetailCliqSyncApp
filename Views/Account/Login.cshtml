@@ -140,6 +140,7 @@
 </style>
 
 <script>
+    <script>
     const ruleBasedAnswers = {
         "hi": "Hello! How can I help you?",
         "hello": "Hi there! Ask me something.",
@@ -163,6 +164,19 @@
         chatbox.innerHTML += `<div><b>Bot:</b> ${response}</div>`;
         chatbox.scrollTop = chatbox.scrollHeight;
     }
+
+    // 👇 Add this to trigger message on Enter key
+    document.addEventListener("DOMContentLoaded", function () {
+        const input = document.getElementById("chatInput");
+        if (input) {
+            input.addEventListener("keypress", function (e) {
+                if (e.key === "Enter") {
+                    sendRuleMessage();
+                    e.preventDefault(); // Prevent form submit if inside form
+                }
+            });
+        }
+    });
 </script>
 
 <script src="~/js/Chatbot.js"></script>
